@@ -26,22 +26,12 @@ public class Main {
         print(new Banana());
         print2(Apple.class);
 
-        try {
-            People people = (People) Class.forName("com.lyang.demo.fanxing.People").newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            People people = createInstance(People.class);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
+        Box<Apple> box = new Box<Apple>();
+        box.set(new Apple());
+        Apple a1 = box.get();
 
+        Box box2 = new Box();
+        box2.set(new Apple());
+        Apple a2 = (Apple) box2.get();
     }
 }
