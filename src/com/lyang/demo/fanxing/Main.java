@@ -14,22 +14,6 @@ public class Main {
         t.eat();
     }
 
-    public static <T> void print2(Class<T> clazz){
-        System.out.println(clazz.getClass());
-    }
-
-    public static void printList1(List<Object> list) {
-        for (Object elem : list)
-            System.out.println(elem + " ");
-        System.out.println();
-    }
-
-    public static <T> void printList2(List<T> list) {
-        for (T elem : list)
-            System.out.println(elem + " ");
-        System.out.println();
-    }
-
     public static <T> T createInstance(Class<T> clazz) throws IllegalAccessException, InstantiationException {
         return clazz.newInstance();
     }
@@ -40,37 +24,27 @@ public class Main {
 
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
+        //测试泛型继承自Fruit
         print(new Apple());
         print(new Banana());
-        print2(Apple.class);
 
+        //测试通过泛型创建类的实例，不用强制转换
         Fruit fruit= createInstance(Fruit.class);
         People people= createInstance(People.class);
-        /*
-        * this can not pass compile , because Class People is not extends Fruit
-        * */
+
+        //测试指定上限通配符
+        //编译不通过 , 因为People类没有继承自Fruit
         //People people2= createInstance2(People.class);
         Apple apple3= createInstance2(Apple.class);
 
-        /*use Generics , you will no longer to cast to class Apple*/
+
+        /*使用了泛型，再也不用强转对象了*/
         Box<Apple> box = new Box<Apple>();
         box.set(new Apple());
         Apple apple = box.get();
-        /*not use Generics , you need cast to class Apple*/
+        /*没有使用泛型，仍需强转成Apple类*/
         Box box2 = new Box();
         box2.set(new Apple());
         Apple apple2 = (Apple) box2.get();
-
-
-        List<Integer> li = Arrays.asList(1, 2, 3);
-        List<String>  ls = Arrays.asList("one", "two", "three");
-        /*
-        * this can not pass compile , because Integer and String is not subtypes of Object
-        * */
-        //printList1(li);
-        //printList1(ls);
-
-        printList2(li);
-        printList2(ls);
     }
 }
