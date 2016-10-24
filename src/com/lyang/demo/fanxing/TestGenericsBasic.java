@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by yanglu on 2016/10/18.
  */
-public class Main {
+public class TestGenericsBasic {
     public static <T extends Fruit> void print(T t){
         System.out.println(t.getClass());
         System.out.println(Class.class);
