@@ -1,2 +1,4 @@
 # FanxingDemo
-用来验证java中T，Class&lt;T>，Class&lt;?>的用法和区别
+JAVA泛型通配符T，E，K，V区别，T以及Class<T>，Class<?>的区别
+
+[简书链接](http://www.jianshu.com/p/95f349258afb)
